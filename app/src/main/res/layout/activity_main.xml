@@ -5,30 +5,61 @@
     android:padding="24dp"
     android:background="@android:color/background_light">
 
-    <!-- 🧩 Center Content -->
+    <!-- 👮 Inspector Chingum Image -->
+    <ImageView
+        android:id="@+id/chingumImage"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="Inspector Chingum"
+        android:scaleType="centerInside"
+        android:src="@drawable/angry"
+        android:elevation="6dp" />
+
+    <!-- 🗨️ Funny Dialogue Over Image -->
+
+    <!-- 🧩 Main Buttons -->
+
+    <TextView
+        android:id="@+id/funnyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chingumImage"
+        android:layout_marginTop="-29dp"
+        android:background="@drawable/speech_bubble_bg"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="🤖 Loading Inspector Chingum dialogues..."
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="16sp" />
+
     <LinearLayout
         android:id="@+id/mainContent"
         android:orientation="vertical"
         android:gravity="center"
         android:layout_centerInParent="true"
+        android:layout_below="@id/funnyText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
-        <!-- 🧭 App Title -->
         <TextView
-            android:text="🛡️ SafeBlocker"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:layout_marginBottom="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:text="🛡️ Chingum Lock 🔒"
+            android:textColor="@android:color/black"
+            android:textSize="26sp"
+            android:textStyle="bold" />
 
-        <!-- 📝 Instruction -->
         <TextView
             android:id="@+id/instructionText"
-            android:text="To activate SafeBlocker:\n1️⃣ Tap 'Start Monitoring'.\n2️⃣ Grant Usage Access permission.\n3️⃣ Tap 'Open Accessibility Settings' and enable SafeBlocker."
+            android:text="To activate Chingum Lock:\n1️⃣ Tap 'Start Monitoring'.\n2️⃣ Grant Usage Access permission.\n3️⃣ Tap 'Open Accessibility Settings' and enable Chingum Lock."
             android:textSize="15sp"
             android:textColor="@android:color/darker_gray"
             android:textAlignment="center"
@@ -37,7 +68,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <!-- 🚀 Start Monitoring Button -->
         <Button
             android:id="@+id/startButton"
             android:text="Start Monitoring"
@@ -48,7 +78,6 @@
             android:textColor="@android:color/white"
             android:textSize="16sp" />
 
-        <!-- ⚙️ Open Accessibility Settings Button -->
         <Button
             android:id="@+id/openAccessibilityBtn"
             android:text="Open Accessibility Settings"
