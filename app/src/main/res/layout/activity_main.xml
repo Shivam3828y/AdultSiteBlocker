@@ -1,23 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="@android:color/background_light">
 
+    <!-- 🧩 Center Content -->
+    <LinearLayout
+        android:id="@+id/mainContent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- 🧭 App Title -->
+        <TextView
+            android:text="🛡️ SafeBlocker"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <!-- 📝 Instruction -->
+        <TextView
+            android:id="@+id/instructionText"
+            android:text="To activate SafeBlocker:\n1️⃣ Tap 'Start Monitoring'.\n2️⃣ Grant Usage Access permission.\n3️⃣ Tap 'Open Accessibility Settings' and enable SafeBlocker."
+            android:textSize="15sp"
+            android:textColor="@android:color/darker_gray"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- 🚀 Start Monitoring Button -->
+        <Button
+            android:id="@+id/startButton"
+            android:text="Start Monitoring"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <!-- ⚙️ Open Accessibility Settings Button -->
+        <Button
+            android:id="@+id/openAccessibilityBtn"
+            android:text="Open Accessibility Settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- 🐙 GitHub Watermark -->
     <TextView
-        android:text="SafeBlocker"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp"
+        android:id="@+id/githubWatermark"
+        android:text="🐙 GitHub: @Shivam3828y"
+        android:textSize="13sp"
+        android:textColor="#66000000"
+        android:alpha="0.6"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="sans-serif-medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/startButton"
-        android:text="Start Monitoring"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-</LinearLayout>
+</RelativeLayout>

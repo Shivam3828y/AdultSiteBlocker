@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "SafeBlockerMain";
-    private Button startButton;
+    private Button startButton, openAccessibilityBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         startButton = findViewById(R.id.startButton);
+        openAccessibilityBtn = findViewById(R.id.openAccessibilityBtn);
 
+        // 🚀 Start monitoring logic
         startButton.setOnClickListener(v -> {
             if (!hasUsageAccessPermission(this)) {
                 Toast.makeText(this, "Grant Usage Access first", Toast.LENGTH_SHORT).show();
@@ -40,6 +42,17 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(TAG, "MonitorService already active.");
             } else {
                 startMonitoringService();
+            }
+        });
+
+        // ⚙️ Opens Accessibility Settings
+        openAccessibilityBtn.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(this, OpenAccessibilityActivity.class);
+                startActivity(intent);
+            } catch (Exception e) {
+                Toast.makeText(this, "Unable to open Accessibility Settings", Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "Error opening Accessibility Settings: " + e.getMessage(), e);
             }
         });
     }

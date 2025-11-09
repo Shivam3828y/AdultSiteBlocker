@@ -4,17 +4,16 @@
     package="com.example.safeblocker">
 
     <!-- ✅ Permissions -->
-    <!-- Allows access to app usage stats (for tracking foreground apps) -->
-    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
+    <!-- Access to app usage stats (for tracking running apps) -->
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions" />
 
-    <!-- Allows foreground/background service execution -->
+    <!-- Allows SafeBlocker to run as a foreground/background service -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-
-    <!-- Android 14+ requires specific foreground service category -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
 
-    <!-- Optional: Auto-start after reboot (for continuous protection) -->
+    <!-- Optional: Auto-start after reboot (future upgrade) -->
     <!-- <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> -->
 
     <application
@@ -27,7 +26,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeBlocker">
 
-        <!-- 🚀 Main entry activity -->
+        <!-- 🚀 Main Entry Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -37,14 +36,22 @@
             </intent-filter>
         </activity>
 
-        <!-- 🧠 Background monitoring service (tracks active apps) -->
+        <!-- ⚙️ Accessibility Shortcut Activity -->
+        <!-- Opens the Accessibility Settings screen directly -->
+        <activity
+            android:name=".OpenAccessibilityActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:label="Accessibility Settings" />
+
+        <!-- 🧠 Background Monitoring Service -->
         <service
             android:name=".MonitorService"
             android:enabled="true"
             android:exported="false"
             android:foregroundServiceType="dataSync" />
 
-        <!-- 👁️ Accessibility service for detecting banned keywords -->
+        <!-- 👁️ Accessibility Service (Keyword / Domain Filter) -->
         <service
             android:name=".KeywordBlockerService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
@@ -52,13 +59,12 @@
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
-
             <meta-data
                 android:name="android.accessibilityservice"
                 android:resource="@xml/keyword_blocker_config" />
         </service>
 
-        <!-- 🔄 (Optional) Boot auto-start receiver -->
+        <!-- (Optional) Boot Auto-start Receiver -->
         <!--
         <receiver
             android:name=".BootReceiver"
